@@ -27,17 +27,31 @@ app.use(
 // ------------------------------------------------------------------
 
 app.setHandler({
+    /*
+    *   Launch Intent - Default Intent when customers launch app
+    */
     LAUNCH() {
-        console.log(this.$cms$responses);
-        this.tell(this.t('welcome.speech'))
+        this.$speech.addText(this.$cms.t('welcome.speech'))
+        this.$reprompt.addText(this.$cms.t('welcome.reprompt'))
+        this.ask(this.$speech, this.$reprompt)
     },
 
-    HelloWorldIntent() {
-        this.ask('Hello World! What\'s your name?', 'Please tell me your name.');
+    /*
+    *   Help Intent - Default Intent when customers ask for HELP
+    */
+    HelpIntent() {
+        this.$speech.addText(this.$cms.t('help.global.speech'))
+        this.$reprompt.addText(this.$cms.t('help.global.reprompt'))
+        this.ask(this.$speech, this.$reprompt)
     },
 
-    MyNameIsIntent() {
-        this.tell('Hey ' + this.$inputs.name.value + ', nice to meet you!');
+    /*
+    *   Unhandled Intent - Default Intent when customers' speech is not recognized in context
+    */
+    Unhandled() {
+        this.$speech.addText(this.$cms.t('unhandled.global.speech'))
+        this.$reprompt.addText(this.$cms.t('unhandled.global.reprompt'))
+        this.ask(this.$speech, this.$reprompt)
     },
 });
 
