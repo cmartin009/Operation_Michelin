@@ -9,6 +9,7 @@ const { Alexa } = require('jovo-platform-alexa');
 const { GoogleAssistant } = require('jovo-platform-googleassistant');
 const { JovoDebugger } = require('jovo-plugin-debugger');
 const { FileDb } = require('jovo-db-filedb');
+const { GoogleSheetsCMS } = require('jovo-cms-googlesheets');
 
 const app = new App();
 
@@ -16,7 +17,8 @@ app.use(
     new Alexa(),
     new GoogleAssistant(),
     new JovoDebugger(),
-    new FileDb()
+    new FileDb(),
+    new GoogleSheetsCMS()
 );
 
 
@@ -26,7 +28,8 @@ app.use(
 
 app.setHandler({
     LAUNCH() {
-        return this.toIntent('HelloWorldIntent');
+        console.log(this.$cms$responses);
+        this.tell(this.t('welcome.speech'))
     },
 
     HelloWorldIntent() {
