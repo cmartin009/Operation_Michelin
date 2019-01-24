@@ -53,6 +53,14 @@ app.setHandler({
         this.$reprompt.addText(this.$cms.t('unhandled.global.reprompt'))
         this.ask(this.$speech, this.$reprompt)
     },
+
+    /*
+    *   End Intent - Default Intent when customers wants to exit
+    */
+    End() {
+        this.$speech.addText(this.$cms.t('end.speech'))
+        this.tell(this.$speech)
+    },
 });
 
 module.exports.app = app;
