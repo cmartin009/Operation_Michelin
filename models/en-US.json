@@ -2,11 +2,18 @@
 	"invocation": "my test app",
 	"intents": [
 		{
-			"name": "HelloWorldIntent",
+			"name": "HelpIntent",
 			"phrases": [
-				"hello",
-				"say hello",
-				"say hello world"
+				"help",
+				"please help",
+				"help me",
+				"please help me",
+				"can you help me",
+				"need help",
+				"I need help",
+				"assistance",
+				"need assistance",
+				"I do not know"
 			]
 		},
 		{
