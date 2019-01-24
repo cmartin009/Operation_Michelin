@@ -18,5 +18,16 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
                 responseHelpRequest.isAsk(expectedSpeech, expectedReprompt)
             ).toBe(true);
         });
+
+        test('should return a helpful message and ask for desired action at "AMAZON.HelpIntent"', async () => {
+            const conversation = testSuite.conversation();
+            const helpRequest = await testSuite.requestBuilder.intent("AMAZON.HelpIntent");
+            const responseHelpRequest = await conversation.send(helpRequest);
+            let expectedSpeech = "I am your yoga assistant. I can help you learn class times, take a mindful minute, or take a quiz to find the class that's right for me! How can I help you?"
+            let expectedReprompt = "I can help you learn class times, take a mindful minute, or take a quiz to find the class that's right for me! How can I help you?"
+            expect(
+                responseHelpRequest.isAsk(expectedSpeech, expectedReprompt)
+            ).toBe(true);
+        });
     });
 }
