@@ -12,11 +12,19 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             const conversation = testSuite.conversation();
             const launchRequest = await testSuite.requestBuilder.launch();
             const responseLaunchRequest = await conversation.send(launchRequest);
-            let expectedSpeech = "Welcome to Yoga on High! We want to improve community access to minfulness. I can help you learn class times, take a mindful minute, or take a quiz to find the class that's right for me! How can I help you?"
-            let expectedReprompt = "I can help you learn class times, take a mindful minute, or take a quiz to find the class that's right for me! How can I help you?"
-            expect(
-                responseLaunchRequest.isAsk(expectedSpeech, expectedReprompt)
-            ).toBe(true);
+
+            // Speech Variables
+            const expectedSpeech = "Welcome to Yoga on High!"
+            const expectedReprompt = "<speak>I can help you learn class times, take a mindful minute, or take a quiz to find the class that's right for me! How can I help you?</speak>"
+            const actualSpeech = responseLaunchRequest.getSpeech();
+            const actualReprompt = responseLaunchRequest.getReprompt();
+
+            console.log(expectedSpeech)
+            console.log(actualSpeech)
+            console.log(actualSpeech.includes(expectedSpeech))
+            //Results
+            expect(actualReprompt).toBe(expectedReprompt);
+            expect(actualSpeech.includes(expectedSpeech)).toBe(true);
         });
     });
 }
