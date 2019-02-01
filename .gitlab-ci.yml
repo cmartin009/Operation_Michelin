@@ -19,6 +19,7 @@ test:
   stage: test
   script:
     - npm install
+    - npm install concurrently
     - npm install -g jovo-cli
     - npm run-script run-and-test
   cache:
