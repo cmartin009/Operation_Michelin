@@ -15,9 +15,12 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
 
             // Speech Variables
             const expectedSpeech = "Welcome to Yoga on High!"
-            const expectedReprompt = "<speak>I can help you learn class times, take a mindful minute, or take a quiz to find the class that's right for me! How can I help you?</speak>"
+            const expectedReprompt = "I can help you learn class times, take a mindful minute, or take a quiz to find the class that's right for me! How can I help you?"
             const actualSpeech = responseLaunchRequest.getSpeech();
             const actualReprompt = responseLaunchRequest.getReprompt();
+            
+            console.log(expectedSpeech);
+            console.log(actualSpeech);
             
             //Results
             expect(actualReprompt).toBe(expectedReprompt);
