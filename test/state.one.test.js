@@ -20,8 +20,6 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             const actualSpeech = responseHelpRequest.getSpeech();
             const actualReprompt = responseHelpRequest.getReprompt();
             
-            console.log(expectedSpeech)
-            console.log(actualSpeech)
             //Results
             expect(actualReprompt.includes(expectedReprompt)).toBe(true)
             expect(actualSpeech.includes(expectedSpeech)).toBe(true);

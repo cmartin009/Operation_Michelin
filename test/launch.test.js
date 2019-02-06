@@ -14,7 +14,7 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             const responseLaunchRequest = await conversation.send(launchRequest);
 
             // Speech Variables
-            const expectedSpeech = "do you seek a message from your valentine, or a secret admirer?"
+            const expectedSpeech = "do you seek a message from your valentine"
             const expectedReprompt = 'Just say "secret admirer"'
             const actualSpeech = responseLaunchRequest.getSpeech();
             const actualReprompt = responseLaunchRequest.getReprompt();
