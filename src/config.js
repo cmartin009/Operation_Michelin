@@ -18,7 +18,7 @@ module.exports = {
 
      cms: {
         GoogleSheetsCMS: {
-            spreadsheetId: '1ToUu1zhgv9ZgD1rifLKw3XaifBIl845iZZF2Bdeg2Xg',
+            spreadsheetId: '1jnGa1vSRA6Yju_PLnnwUezCQGRGhW1GUCqjRSPr9yYw',
             access: 'public',
             sheets: [
                 {
