@@ -32,8 +32,8 @@ app.setHandler({
     *   Launch Intent - Default Intent when customers launch app
     */
     LAUNCH() {
-        this.$speech.addText(this.$cms.t('welcome.speech'))
-        this.$reprompt.addText(this.$cms.t('welcome.reprompt'))
+        this.$speech.addText(this.t('welcome.speech'))
+        this.$reprompt.addText(this.t('welcome.reprompt'))
         console.log(this.$cms.valentine["Patrick Sweetman"]) 
         this.ask(this.$speech, this.$reprompt)
     },
@@ -42,8 +42,8 @@ app.setHandler({
     *   Help Intent - Default Intent when customers ask for HELP
     */
     HelpIntent() {
-        this.$speech.addText(this.$cms.t('help.global.speech'))
-        this.$reprompt.addText(this.$cms.t('help.global.reprompt'))
+        this.$speech.addText(this.t('help.global.speech'))
+        this.$reprompt.addText(this.t('help.global.reprompt'))
         this.ask(this.$speech, this.$reprompt)
     },
 
@@ -51,8 +51,8 @@ app.setHandler({
     *   Unhandled Intent - Default Intent when customers' speech is not recognized in context
     */
     Unhandled() {
-        this.$speech.addText(this.$cms.t('unhandled.global.speech'))
-        this.$reprompt.addText(this.$cms.t('unhandled.global.reprompt'))
+        this.$speech.addText(this.t('unhandled.global.speech'))
+        this.$reprompt.addText(this.t('unhandled.global.reprompt'))
         this.ask(this.$speech, this.$reprompt)
     },
 
@@ -60,7 +60,7 @@ app.setHandler({
     *   End Intent - Default Intent when customers wants to exit
     */
     End() {
-        this.$speech.addText(this.$cms.t('end.speech'))
+        this.$speech.addText(this.t('end.speech'))
         this.tell(this.$speech)
     },
 
@@ -69,8 +69,8 @@ app.setHandler({
         *   STATE ONE Help Intent - Default Intent when customers ask for HELP
         */
         HelpIntent() {
-            this.$speech.addText(this.$cms.t('help.state.one.speech'))
-            this.$reprompt.addText(this.$cms.t('help.state.one.reprompt'))
+            this.$speech.addText(this.t('help.state.one.speech'))
+            this.$reprompt.addText(this.t('help.state.one.reprompt'))
             this.ask(this.$speech, this.$reprompt)
         },
 
@@ -78,8 +78,8 @@ app.setHandler({
         *   STATE ONE Unhandled Intent - Default Intent when customers' speech is not recognized in context
         */
         Unhandled() {
-            this.$speech.addText(this.$cms.t('unhandled.state.one.speech'))
-            this.$reprompt.addText(this.$cms.t('unhandled.state.one.reprompt'))
+            this.$speech.addText(this.t('unhandled.state.one.speech'))
+            this.$reprompt.addText(this.t('unhandled.state.one.reprompt'))
             this.ask(this.$speech, this.$reprompt)
         },
 
