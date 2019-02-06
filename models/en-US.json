@@ -1,5 +1,5 @@
 {
-	"invocation": "my test app",
+	"invocation": "my secret valentine",
 	"intents": [
 		{
 			"name": "HelpIntent",
@@ -17,19 +17,40 @@
 			]
 		},
 		{
-			"name": "MyNameIsIntent",
+			"name": "GetPersonalValentineIntent",
 			"phrases": [
-				"{name}",
-				"my name is {name}",
-				"i am {name}",
-				"you can call me {name}"
+				"valentine message",
+				"valentine message {phoneNumber}",
+				"valentines message",
+				"valentines message {phoneNumber}",
+				"valentine card",
+				"valentine day card",
+				"valentines day card",
+				"valentines day card {phoneNumber}",
+				"valentine",
+				"seek a message from my valentine",
+				"seek a message from my valentine {phoneNumber}",
+				"seek a message",
+				"seek message",
+				"seek message {phoneNumber}",
+				"message for me",
+				"message from valentine",
+				"message from valentine {phoneNumber}",
+				"message from valentine to {phoneNumber}",
+				"message from my valentine",
+				"my valentine",
+				"hear valentine",
+				"{phoneNumber}",
+				"valentine for {phoneNumber}",
+				"my phone number is {phoneNumber}",
+				"message for {phoneNumber}"
 			],
 			"inputs": [
 				{
-					"name": "name",
+					"name": "phoneNumber",
 					"type": {
-						"alexa": "AMAZON.US_FIRST_NAME",
-						"dialogflow": "@sys.given-name"
+						"alexa": "AMAZON.PhoneNumber",
+						"dialogflow": "@sys.phone-number"
 					}
 				}
 			]
