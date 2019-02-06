@@ -14,9 +14,9 @@ const { GoogleSheetsCMS } = require('jovo-cms-googlesheets');
 let myIntentMap = {
     'AMAZON.YesIntent' : 'YesIntent',
     'AMAZON.NoIntent' : 'NoIntent',
-    'AMAZON.CancelIntent' : 'END',
+    'AMAZON.CancelIntent' : 'End',
     'AMAZON.HelpIntent' : 'HelpIntent',
-    'AMAZON.StopIntent' : 'END'
+    'AMAZON.StopIntent' : 'End'
 };
 
 const config = {
