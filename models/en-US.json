@@ -17,6 +17,20 @@
 			]
 		},
 		{
+			"name": "LearnMoreIntent",
+			"phrases": [
+				"learn more",
+				"tell me more",
+				"learn more about my valentine",
+				"tell me more about this",
+				"what can you do",
+				"what is this",
+				"learn more about this",
+				"learn more about the app",
+				"learn more about the service"
+			]
+		},
+		{
 			"name": "GetPersonalValentineIntent",
 			"phrases": [
 				"valentine message",

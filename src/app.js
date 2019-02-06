@@ -40,6 +40,26 @@ app.use(
 app.setHandler({
  
     /*
+    *   ON_REQUEST Intent - Default Intent when customers send any request.
+    *       default routes to LAUNCH
+    */
+   ON_REQUEST() {
+    let bodyTemplate6;
+        if (this.getType()==="AlexaSkill"){
+            bodyTemplate6 = this.$alexaSkill.templateBuilder('BodyTemplate6');
+
+            bodyTemplate6.setToken('token')
+            .setTextContent("")
+            .setFullScreenImage({
+                description: 'My Secret Valentine',
+                url: "https://s3.amazonaws.com/my-valentine/love-letter.png",
+            });
+
+            this.$alexaSkill.showDisplayTemplate(bodyTemplate6);
+        }
+    },
+
+    /*
     *   NEW_SESSION Intent - Default Intent when customers begin new session.
     *       default routes to LAUNCH
     */
@@ -75,9 +95,18 @@ app.setHandler({
             this.$speech.addText(this.t('admirer.speech'));
             this.$speech.addAudio(audioURL)
             this.$speech.addAudio("https://s3.amazonaws.com/sonic-branding/smooch.mp3")
-            this.tell(this.$speech, this.$reprompt)
+            return this.toStateIntent("END")
         }
         
+    },
+
+    /**
+     * LearnMoreIntent - gives more information about My Valentine service
+     */
+    LearnMoreIntent() {
+       this.$speech.addText(this.t('learn.more.speech'));
+       this.$reprompt.addText(this.t('learn.more.reprompt'));
+       this.ask(this.$speech, this.$reprompt);    
     },
 
     /*
