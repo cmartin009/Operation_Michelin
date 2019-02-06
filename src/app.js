@@ -27,12 +27,14 @@ app.use(
 // ------------------------------------------------------------------
 
 app.setHandler({
+
     /*
     *   Launch Intent - Default Intent when customers launch app
     */
     LAUNCH() {
         this.$speech.addText(this.$cms.t('welcome.speech'))
         this.$reprompt.addText(this.$cms.t('welcome.reprompt'))
+        console.log(this.$cms.valentine["Patrick Sweetman"]) 
         this.ask(this.$speech, this.$reprompt)
     },
 

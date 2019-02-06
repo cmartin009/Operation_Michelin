@@ -24,6 +24,12 @@ module.exports = {
                 {
                     name: 'responses',
                     type: 'Responses',
+                    position: 1,
+                },
+                {
+                    name: 'valentine',
+                    type: 'KeyValue',
+                    position: 2,
                 },
             ]
         }
