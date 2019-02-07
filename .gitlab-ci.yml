@@ -18,10 +18,9 @@ stages:
 test:
   stage: test
   script:
-    - npm install
+    - npm install jovo-cli && npm install jovo-cms-googlesheets --save
     - npm install concurrently
     - npm install wait-on
-    - npm install -g jovo-cli
     - npm run-script run-and-test
   cache:
     paths:
