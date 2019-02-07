@@ -62,27 +62,6 @@ app.setHandler({
     End() {
         this.$speech.addText(this.$cms.t('end.speech'))
         this.tell(this.$speech)
-    },
-
-    StateOne: {
-        /*
-        *   STATE ONE Help Intent - Default Intent when customers ask for HELP
-        */
-        HelpIntent() {
-            this.$speech.addText(this.$cms.t('help.state.one.speech'))
-            this.$reprompt.addText(this.$cms.t('help.state.one.reprompt'))
-            this.ask(this.$speech, this.$reprompt)
-        },
-
-        /*
-        *   STATE ONE Unhandled Intent - Default Intent when customers' speech is not recognized in context
-        */
-        Unhandled() {
-            this.$speech.addText(this.$cms.t('unhandled.state.one.speech'))
-            this.$reprompt.addText(this.$cms.t('unhandled.state.one.reprompt'))
-            this.ask(this.$speech, this.$reprompt)
-        },
-
     }
 });
 

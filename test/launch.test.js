@@ -22,6 +22,8 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             //Results
             expect(actualReprompt).toBe(expectedReprompt);
             expect(actualSpeech.includes(expectedSpeech)).toBe(true);
+
+            await conversation.clearDb();
         });
     });
 }

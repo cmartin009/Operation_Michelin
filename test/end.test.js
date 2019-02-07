@@ -16,6 +16,8 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             expect(
                 responseEndRequest.isTell(expectedSpeech)
             ).toBe(true);
+
+            await conversation.clearDb();
         });
     });
 }

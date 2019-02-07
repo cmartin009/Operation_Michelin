@@ -17,6 +17,8 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             expect(
                 responseUnhandledRequest.isAsk(expectedSpeech, expectedReprompt)
             ).toBe(true);
+
+            await conversation.clearDb();
         });
     });
 }
