@@ -133,8 +133,6 @@ app.setHandler({
     End() {
         this.$speech.addText(this.t('end.speech'))
         this.tell(this.$speech)
-<<<<<<< HEAD
-=======
     },
 
     StateOne: {
@@ -156,7 +154,6 @@ app.setHandler({
             this.ask(this.$speech, this.$reprompt)
         },
 
->>>>>>> f7fa2d82b30e47a98d54a0c6c96fa656c4e2892a
     }
 });
 
