@@ -12,14 +12,6 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             const conversation = testSuite.conversation();
             const endRequest = await testSuite.requestBuilder.intent("End");
             const responseEndRequest = await conversation.send(endRequest);
-<<<<<<< HEAD
-            let expectedSpeech = "Thank You for using my valentine voice app by Voice First Tech. You can create your own message and upload at voicefirsttech.com/myvalentine"
-            expect(
-                responseEndRequest.isTell(expectedSpeech)
-            ).toBe(true);
-
-            await conversation.clearDb();
-=======
             
             // Speech Variables
             const expectedSpeech = "Thank You for using my valentine voice app by Voice First Tech. You can create your own message and upload at voicefirsttech.com/myvalentine"
@@ -27,7 +19,6 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             
             //Results
             expect(actualSpeech.includes(expectedSpeech)).toBe(true);
->>>>>>> f7fa2d82b30e47a98d54a0c6c96fa656c4e2892a
         });
     });
 }
