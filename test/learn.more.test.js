@@ -23,6 +23,8 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             //Results
             expect(actualReprompt).toBe(expectedReprompt);
             expect(actualSpeech.includes(expectedSpeech)).toBe(true);
+
+            await conversation.clearDb();
         });
 
         test('should return a valentine AFTER more information about My Valentine at "LEARNMORE"', async () => {
@@ -50,6 +52,8 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             
             //Results
             expect(actualSpeech.includes(expectedSpeech)).toBe(true);
+
+            await conversation.clearDb();
         });
     });
 }

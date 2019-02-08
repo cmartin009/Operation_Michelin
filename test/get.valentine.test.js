@@ -20,6 +20,7 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             
             //Results
             expect(actualSpeech.includes(expectedSpeech)).toBe(true);
+            await conversation.clearDb();
         });
 
         test('should return a valentine message at "GETPERSONALVALENTINE" without key', async () => {
@@ -34,6 +35,8 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             expect(
                 responseToGetValentineRequest.isAsk(expectedSpeech, expectedReprompt)
             ).toBe(true);
+
+            await conversation.clearDb();
         });
 
         test('should return a valentine message after requesting phone number "GETPERSONALVALENTINE" without key (1st attempt)', async () => {
@@ -58,6 +61,8 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             
             //Results
             expect(actualSpeech.includes(expectedSpeech)).toBe(true);
+
+            await conversation.clearDb();
         });
     });
 }
