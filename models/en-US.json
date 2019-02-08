@@ -57,7 +57,9 @@
 				"{phoneNumber}",
 				"valentine for {phoneNumber}",
 				"my phone number is {phoneNumber}",
-				"message for {phoneNumber}"
+				"message for {phoneNumber}",
+				"open Valentine",
+				"open my valentine"
 			],
 			"inputs": [
 				{

@@ -74,6 +74,9 @@ app.setHandler({
         this.$speech.addText(this.t('welcome.speech'))
         this.$reprompt.addText(this.t('welcome.reprompt'))
         console.log(this.$cms.valentine["Patrick Sweetman"]) 
+        if (this.isGoogleAction()) {
+            this.$googleAction.showSuggestionChips(['Open Valentine', 'Learn More']);
+        }
         this.ask(this.$speech, this.$reprompt)
     },
 
