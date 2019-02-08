@@ -98,7 +98,7 @@ app.setHandler({
             this.$speech.addText(this.t('admirer.speech'));
             this.$speech.addAudio(audioURL)
             this.$speech.addAudio("https://s3.amazonaws.com/sonic-branding/smooch.mp3")
-            return this.toStateIntent("END")
+            this.toStatelessIntent("End")
         }
         
     },
