@@ -17,6 +17,8 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             expect(
                 responseHelpRequest.isAsk(expectedSpeech, expectedReprompt)
             ).toBe(true);
+
+            await conversation.clearDb();
         });
 
         test('should return a helpful message and ask for desired action at "AMAZON.HelpIntent"', async () => {
@@ -28,6 +30,8 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             expect(
                 responseHelpRequest.isAsk(expectedSpeech, expectedReprompt)
             ).toBe(true);
+
+            await conversation.clearDb();
         });
     });
 }

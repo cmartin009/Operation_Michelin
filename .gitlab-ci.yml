@@ -18,10 +18,6 @@ stages:
 test:
   stage: test
   script:
-    - npm install
-    - npm install concurrently
-    - npm install wait-on
-    - npm install -g jovo-cli
     - npm run-script run-and-test
   cache:
     paths:
@@ -33,15 +29,15 @@ deploy:
     - master
   script:
     - apt-get update # required to install zip
-    # - apt-get -y install python-dev
-    # - apt-get -y install python-pip
-    # - pip install boto3==1.3.0 # required for lambda_deploy.py
-    # # package up the function for deployment
-    # # Be sure to change the arguments to your function files
-    # - npm install
-    # - npm install gulp --save-dev
-    # - npm install -g jovo-cli
-    # - npm install jovo-framework
-    # - npm install firebase-admin
-    # - npm run bundle
-    # - python lambda_deploy.py
+    - apt-get -y install python-dev
+    - apt-get -y install python-pip
+    - pip install boto3==1.3.0 # required for lambda_deploy.py
+    # package up the function for deployment
+    # Be sure to change the arguments to your function files
+    - npm install
+    - npm install gulp --save-dev
+    - npm install -g jovo-cli
+    - npm install jovo-framework
+    - npm install firebase-admin
+    - npm run bundle
+    - python lambda_deploy.py
