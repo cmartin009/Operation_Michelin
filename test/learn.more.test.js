@@ -15,7 +15,7 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             const responseToGetValentineRequest = await conversation.send(getValentineRequest);
             
             // Speech Variables
-            const expectedSpeech = "My Valentine Voice app allows users to present their loved ones with a audio message. Just record your message, upload the recording to voicevalentine dot com and fill out a few short details. do you seek a message from your valentine, or do you want to learn more?"
+            const expectedSpeech = "My Valentine allows users to present their loved ones with a audio message. "
             const actualSpeech = responseToGetValentineRequest.getSpeech();
             const expectedReprompt = "do you seek a message from your valentine, or do you want to learn more?";
             const actualReprompt = responseToGetValentineRequest.getReprompt();
@@ -34,7 +34,7 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             let responseToGetValentineRequest = await conversation.send(getValentineRequest);
             
             // Speech Variables
-            let expectedSpeech = "My Valentine Voice app allows users to present their loved ones with a audio message. Just record your message, upload the recording to voicevalentine dot com and fill out a few short details. do you seek a message from your valentine, or do you want to learn more?"
+            let expectedSpeech = "My Valentine allows users to present their loved ones with a audio message."
             let actualSpeech = responseToGetValentineRequest.getSpeech();
             let expectedReprompt = "do you seek a message from your valentine, or do you want to learn more?";
             let actualReprompt = responseToGetValentineRequest.getReprompt();
