@@ -44,21 +44,22 @@ app.setHandler({
     *       default routes to LAUNCH
     */
    ON_REQUEST() {
-    let bodyTemplate6;
-        if (this.getType()==="AlexaSkill"){
-            bodyTemplate6 = this.$alexaSkill.templateBuilder('BodyTemplate6');
-
-            bodyTemplate6.setToken('token')
-            .setTextContent("")
-            .setFullScreenImage({
-                description: 'My Secret Valentine',
-                url: "https://s3.amazonaws.com/my-valentine/love-letter.png",
+       if (this.isAlexaSkill()) {
+            this.$alexaSkill.addDirective({
+                type: 'Alexa.Presentation.APL.RenderDocument', // url: "https://s3.amazonaws.com/my-valentine/love-letter.png"
+                version: '1.0',
+                document: require(`./document.json`),
+                datasources: require(`./datasource.json`),
             });
-
-            this.$alexaSkill.showDisplayTemplate(bodyTemplate6);
-        }
+       } else {
+            let title = 'My Valentine';
+            let content = 'You\'ve got a new Valentine';
+            let imageUrl = 'https://s3.amazonaws.com/my-valentine/love-letter.png';
+            
+            this.showImageCard(title, content, imageUrl)
+                .tell('My Valentine!');
+       }
     },
-
     /*
     *   NEW_SESSION Intent - Default Intent when customers begin new session.
     *       default routes to LAUNCH
@@ -94,13 +95,16 @@ app.setHandler({
             this.$reprompt.addText(this.t('admirer.no.key.reprompt'))
             this.ask(this.$speech, this.$reprompt) 
         } else {
-            let audioURL = this.$cms.valentine[phoneNumber] === undefined ? "https://s3.amazonaws.com/sonic-branding/smooch.mp3" : this.$cms.valentine[phoneNumber];
+            let audioURL = this.$cms.valentine[phoneNumber] === undefined ? "You do not have any Valentines yet. You can visit voicefirsttech.com/myvalentine today to send a Valentine for FREE." : this.$cms.valentine[phoneNumber];
             this.$speech.addText(this.t('admirer.speech'));
-            this.$speech.addAudio(audioURL)
+            if (audioURL.includes("http")) {//audio-url
+                this.$speech.addAudio(audioURL)
+            } else {//text-to-speech
+                this.$speech.addText(audioURL)
+            }
             this.$speech.addAudio("https://s3.amazonaws.com/sonic-branding/smooch.mp3")
             this.toStatelessIntent("End")
         }
-        
     },
 
     /**
@@ -135,6 +139,7 @@ app.setHandler({
     */
     End() {
         this.$speech.addText(this.t('end.speech'))
+        this.$speech.addAudio("https://s3.amazonaws.com/sonic-branding/bubbles.mp3")
         this.tell(this.$speech)
     },
 
