@@ -12,6 +12,7 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             const conversation = testSuite.conversation();
             
             const getValentineRequest = await testSuite.requestBuilder.intent("GetPersonalValentineIntent", {phoneNumber: "5138505895"});
+            getValentineRequest.setAccessToken("DUMMY-TOKEN")
             const responseToGetValentineRequest = await conversation.send(getValentineRequest);
             
             // Speech Variables
@@ -27,6 +28,7 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             const conversation = testSuite.conversation();
             
             const getValentineRequest = await testSuite.requestBuilder.intent("GetPersonalValentineIntent");
+            getValentineRequest.setAccessToken("DUMMY-TOKEN")
             const responseToGetValentineRequest = await conversation.send(getValentineRequest);
             
             let expectedSpeech = "Let's find your valentine. Please say your phone number now."
@@ -43,6 +45,7 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             const conversation = testSuite.conversation();
             
             let getValentineRequest = await testSuite.requestBuilder.intent("GetPersonalValentineIntent");
+            getValentineRequest.setAccessToken("DUMMY-TOKEN")
             let responseToGetValentineRequest = await conversation.send(getValentineRequest);
 
             let expectedSpeech = "Let's find your valentine. Please say your phone number now."
@@ -53,6 +56,7 @@ for (const p of [new Alexa(), new GoogleAssistant()]) {
             ).toBe(true);
         
             getValentineRequest = await testSuite.requestBuilder.intent("GetPersonalValentineIntent", {phoneNumber: "5138505895"});
+            getValentineRequest.setAccessToken("DUMMY-TOKEN")
             responseToGetValentineRequest = await conversation.send(getValentineRequest);
             
             // Speech Variables

@@ -60,12 +60,38 @@ app.setHandler({
                 .tell('My Valentine!');
        }
     },
+
     /*
     *   NEW_SESSION Intent - Default Intent when customers begin new session.
     *       default routes to LAUNCH
     */
     NEW_SESSION() {
         this.$speech.addAudio("https://s3.amazonaws.com/sonic-branding/smooch.mp3");
+    },
+
+    /*
+    *   ON_SIGN_IN Intent - Default Intent when customers signs in.
+    */
+    ON_SIGN_IN() {
+        if (this.$googleAction.getSignInStatus() === 'CANCELLED') {
+            // User did not link their account
+            this.$speech.addText(this.t('welcome.speech'))
+            this.$reprompt.addText(this.t('welcome.reprompt'))
+            this.$googleAction.showSuggestionChips(['Open Valentine', 'Learn More']);
+            this.ask(this.$speech, this.$reprompt)
+        } else if (this.$googleAction.getSignInStatus() === 'OK') {
+            // User linked their account
+            this.$speech.addText(this.t('welcome.speech'))
+            this.$reprompt.addText(this.t('welcome.reprompt'))
+            this.$googleAction.showSuggestionChips(['Open Valentine', 'Learn More']);
+            this.ask(this.$speech, this.$reprompt)
+        } else if (this.$googleAction.getSignInStatus() === 'ERROR') {
+            // There was an error
+            this.$speech.addText(this.t('welcome.speech'))
+            this.$reprompt.addText(this.t('welcome.reprompt'))
+            this.$googleAction.showSuggestionChips(['Open Valentine', 'Learn More']);
+            this.ask(this.$speech, this.$reprompt)
+        }
     },
 
     /*
@@ -85,6 +111,12 @@ app.setHandler({
      * GetPersonalValentineIntent - gives user their valentine
      */
     GetPersonalValentineIntent() {
+        let token = this.$request.getAccessToken();
+        if (this.isGoogleAction()) {
+            if (!token) {
+                return this.showAccountLinkingCard();
+            }
+        }
         let phoneNumber = this.$inputs.phoneNumber ? this.$inputs.phoneNumber.value : ""
         console.log("PHONE NUMBER")
         console.log(phoneNumber)
