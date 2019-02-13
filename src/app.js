@@ -44,7 +44,7 @@ app.setHandler({
     *       default routes to LAUNCH
     */
    ON_REQUEST() {
-       if (this.isAlexaSkill()) {
+       if (this.isAlexaSkill() && this.$request.hasScreenInterface()) {
             this.$alexaSkill.addDirective({
                 type: 'Alexa.Presentation.APL.RenderDocument', // url: "https://s3.amazonaws.com/my-valentine/love-letter.png"
                 version: '1.0',
